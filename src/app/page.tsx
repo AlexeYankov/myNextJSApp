@@ -1,14 +1,16 @@
-import { router } from '@/shared/router';
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
+'use client';
 
-export default function IndexPage() {
-  const headersList = headers();
-  const id = headersList.get('id');
+import SignInPage from '@/pages/public/sign-in/SignIn';
+import Header from '@/shared/ui/components/header/Header';
+import { Center } from '@chakra-ui/react';
 
-  if (id === null || id === undefined) {
-    redirect(router.SIGN_IN);
-  }
-  redirect(router.SIGN_IN);
-  // redirect(`${ROUTES.PROFILE}/${id}`);
-}
+const SignIn = () => {
+  return (
+    <Center flexDirection={'column'}>
+      <Header />
+      <SignInPage />;
+    </Center>
+  );
+};
+
+export default SignIn;

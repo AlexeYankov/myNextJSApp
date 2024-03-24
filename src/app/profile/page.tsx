@@ -1,7 +1,4 @@
-'use client';
 
-
-// import s from './SignIn.module.scss';
 
 const Home = () => {
   return (

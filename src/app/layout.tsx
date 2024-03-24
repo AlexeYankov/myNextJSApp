@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../shared/styles/globals.scss";
+import type { Metadata } from 'next';
 import { ToastContainer } from 'react-toastify';
-import Providers from "../shared/providers/Providers";
-import clsx from "clsx";
-
-const inter = Inter({ subsets: ["latin"] });
+import { fonts } from '@/shared/styles/fonts';
+import Providers from '../shared/providers/Providers';
 
 export const metadata: Metadata = {
-  title: "My Next App",
-  description: "",
+  title: 'Welcome to Next App',
+  description: 'sign in page',
 };
 
 export default function RootLayout({
@@ -19,8 +15,8 @@ export default function RootLayout({
 }>) {
   const lang = 'en';
   return (
-    <html lang={lang}>
-     <body>
+    <html lang={lang} className={fonts.rubik.variable}>
+      <body>
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -33,10 +29,7 @@ export default function RootLayout({
           pauseOnHover
           theme="dark"
         />
-        <Providers lang={lang}>
-          <div className={clsx(inter.className)}>{children}</div>
-        </Providers>
-        <div id="portal" />
+        <Providers lang={lang}>{children}</Providers>
       </body>
     </html>
   );
