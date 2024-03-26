@@ -24,13 +24,14 @@ import React from 'react';
 export type TextFieldProps = {
   errorMessage?: string;
   inputId?: string;
+  maxW?: string;
   label?: string;
   onClearClick?: () => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   password?: boolean;
   search?: boolean;
-  type?: 'password' | 'text';
-  value?: string;
+  type?: 'password' | 'text' | 'number';
+  value?: string | number;
   placeholder?: string;
 } & ComponentPropsWithoutRef<'input'>;
 
@@ -40,6 +41,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
       className,
       disabled,
       errorMessage,
+      maxW,
       inputId,
       value,
       onChange,
@@ -53,7 +55,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
     } = props;
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const [valueType, setValueType] = useState(type);
-    const isShowClearButton = onClearClick && search && value?.length! > 0;
+    const isShowClearButton = onClearClick && search && value?.toString().length! > 0;
     const setInputType = () => {
       if (valueType === 'text') {
         return setValueType('password');
@@ -70,7 +72,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
       ? 'danger.--color-danger-300'
       : 'dark.--color-dark-100';
     return (
-      <Box>
+      <Box maxW={maxW}>
         <Text fontSize="sm" color="dark.--color-dark-100">
           {label}
         </Text>

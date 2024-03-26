@@ -1,11 +1,12 @@
 import logo from '../../../../../public/others/Logo.png';
 import Image from 'next/image';
 import { Box, Text } from '@chakra-ui/react';
-import { BtnKit } from '../../button';
-import { InputKit } from '../../input/input';
+import { BtnKit } from '../../kit/button';
+import { InputKit } from '../../kit/input/input';
 import { ChangeEvent, useState } from 'react';
-import { CheckBoxKit } from '../../checkbox';
-import { TabsKit } from '../../tabs';
+import { CheckBoxKit } from '../../kit/checkbox';
+import { TabsKit } from '../../kit/tabs';
+import { SliderKit } from '../../kit/slider';
 
 const Header = () => {
   // const [input, setInput] = useState<string>('');
@@ -37,10 +38,12 @@ const Header = () => {
         px={25}
       >
         <Image priority src={logo} width={156} height={50} alt={'logo'} />
-        <BtnKit px={'7'}>
+         <BtnKit px={'7'}>
           <Text fontSize="sm">Sign In</Text>
         </BtnKit>
-        <TabsKit options={[{title: 'one'}, {title: 'two'}, {title: 'two'}, {title: 'two'}]}/>
+        {/* <CheckBoxKit label={'fegerge'}/> */}
+        <SliderKit/>
+        {/* <TabsKit options={[{title: 'one'}, {title: 'two'}, {title: 'two'}, {title: 'two'}]}/> */}
         {/* <CheckBoxKit/>
         <InputKit
           onChange={inputHandler}

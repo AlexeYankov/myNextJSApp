@@ -5,7 +5,7 @@ import en from '../../../locales/en.json';
 import ru from '../../../locales/ru.json';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { ReactNode } from 'react';
-import { ChakraBaseProvider, theme as chakraTheme } from '@chakra-ui/react';
+import { ChakraBaseProvider } from '@chakra-ui/react';
 import { theme } from './themeConfig';
 
 function Providers({

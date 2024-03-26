@@ -16,4 +16,5 @@ export type IconName =
 	| "sprite"
 	| "trash-outline"
 	| "checkbox-selected"
+	| "checkbox-unselected"
 	| "vercel";

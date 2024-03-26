@@ -1,7 +1,9 @@
 import { extendTheme } from '@chakra-ui/react';
-import { buttonTheme } from '../ui/button';
-import { inputTheme } from '../ui/input';
-import { tabsTheme } from '../ui/tabs';
+import { buttonTheme } from '../ui/kit/button';
+import { inputTheme } from '../ui/kit/input';
+import { tabsTheme } from '../ui/kit/tabs';
+import { checkboxTheme } from '../ui/kit/checkbox';
+import { sliderTheme } from '../ui/kit/slider';
 
 export const theme = extendTheme({
   colors: {
@@ -60,7 +62,13 @@ export const theme = extendTheme({
     heading: 'var(--font-rubik)',
     body: 'var(--font-rubik)',
   },
-  components: { Button: buttonTheme, Input: inputTheme, Tabs: tabsTheme },
+  components: {
+    Button: buttonTheme,
+    Input: inputTheme,
+    Tabs: tabsTheme,
+    Checkbox: checkboxTheme,
+    Slider: sliderTheme,
+  },
   config: {
     initialColorMode: 'dark',
     useSystemColorMode: false,

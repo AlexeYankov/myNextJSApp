@@ -21,6 +21,9 @@ const primary = defineStyle({
         cursor: 'not-allowed',
         opacity: '0.8',
       },
+      _selected: {
+        bg: 'accent.--color-accent-500'
+      },
     },
   },
 });

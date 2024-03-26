@@ -9,11 +9,9 @@ export const TabsKit = (props: any) => {
           return (
             <Tab
               style={{
-                //   border: '1px solid red',
                 borderRight: i === options.length - 1 ? 'none' : '1px solid',
                 borderLeft: i === 0 ? 'none' : '1px solid',
               }}
-              _selected={{ color: 'white', bg: 'accent.--color-accent-500' }}
               key={el}
             >
               {el.title}
