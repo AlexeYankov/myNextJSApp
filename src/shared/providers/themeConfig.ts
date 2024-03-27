@@ -4,6 +4,10 @@ import { inputTheme } from '../ui/kit/input';
 import { tabsTheme } from '../ui/kit/tabs';
 import { checkboxTheme } from '../ui/kit/checkbox';
 import { sliderTheme } from '../ui/kit/slider';
+import { menuTheme } from '../ui/kit/dropdown';
+import { radioTheme } from '../ui/kit/radioGroup';
+import { selectTheme } from '../ui/kit/select';
+import { modalTheme } from '../ui/kit/modal';
 
 export const theme = extendTheme({
   colors: {
@@ -68,6 +72,10 @@ export const theme = extendTheme({
     Tabs: tabsTheme,
     Checkbox: checkboxTheme,
     Slider: sliderTheme,
+    Menu: menuTheme,
+    Radio: radioTheme,
+    Select: selectTheme,
+    Modal: modalTheme,
   },
   config: {
     initialColorMode: 'dark',

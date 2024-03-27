@@ -7,8 +7,15 @@ import { ChangeEvent, useState } from 'react';
 import { CheckBoxKit } from '../../kit/checkbox';
 import { TabsKit } from '../../kit/tabs';
 import { SliderKit } from '../../kit/slider';
+import { DropDownKit } from '../../kit/dropdown/dropdown';
+import img from '../../../../../public/others/avatar.png';
+import { Icon } from '../../kit/icons';
+import { RadioGroupKit } from '../../kit/radioGroup';
+import { SelectKit } from '../../kit/select';
+import { ModalKit } from '../../kit/modal';
 
 const Header = () => {
+  const [modal, openModal] = useState(false)
   // const [input, setInput] = useState<string>('');
   // const clearInput = () => {
   //   setInput('')
@@ -38,12 +45,36 @@ const Header = () => {
         px={25}
       >
         <Image priority src={logo} width={156} height={50} alt={'logo'} />
-         <BtnKit px={'7'}>
+        <BtnKit px={'7'}>
           <Text fontSize="sm">Sign In</Text>
         </BtnKit>
         {/* <CheckBoxKit label={'fegerge'}/> */}
-        <SliderKit/>
+        {/* <SliderKit/> */}
+        {/* <DropDownKit
+          options={[
+            { name: 'grg', avatar: img, email: 'rege@gre432423wertgwergergregerergergergergergregergergergerergergr'},
+            { title: 'tgrgrrg', icon: <Icon name='search' width={24} height={20} fill='white'/> },
+            { title: 'tgrgrrg' },
+            { title: 'tgrgrrg' },
+            { title: 'tgrgrrg' },
+          ]}
+        >
+                y
+        </DropDownKit> */}
+        {/* <SelectKit/> */}
+        <ModalKit
+          title={'modal'}
+          fields={[{ fieldName: 'name pack', placeHolder: 'name pack' }]}
+          actionTitle="delete Card"
+          cover={[]}
+          open={modal}
+          setOpen={()=>openModal(!modal)}
+          checkBoxLabel='Private pack'
+        />
+        <BtnKit onClick={()=>openModal(!modal)}>modal</BtnKit>
+        {/* <RadioGroupKit options={['gregerr', 'label', 'three']}/> */}
         {/* <TabsKit options={[{title: 'one'}, {title: 'two'}, {title: 'two'}, {title: 'two'}]}/> */}
+        {/* <CheckBoxKit/> */}
         {/* <CheckBoxKit/>
         <InputKit
           onChange={inputHandler}

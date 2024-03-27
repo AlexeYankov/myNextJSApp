@@ -3,7 +3,7 @@ import { Icon } from '../icons';
 
 export const CheckBoxKit = (props: any) => {
   const { disabled, label, isChecked, ...rest } = props;
-  
+
   function CustomIcon(props: any) {
     const { isIndeterminate, isChecked, ...rest } = props;
     return (
@@ -17,7 +17,7 @@ export const CheckBoxKit = (props: any) => {
   }
 
   return (
-    <Center>
+    <Center justifyContent={'flex-start'}>
       <Checkbox
         id={label}
         isDisabled={disabled}

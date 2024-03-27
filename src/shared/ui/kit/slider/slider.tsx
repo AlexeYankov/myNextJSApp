@@ -1,9 +1,8 @@
-import { useDeferredValue, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Center,
   RangeSlider,
   RangeSliderFilledTrack,
-  RangeSliderMark,
   RangeSliderThumb,
   RangeSliderTrack,
 } from '@chakra-ui/react';

@@ -17,4 +17,9 @@ export type IconName =
 	| "trash-outline"
 	| "checkbox-selected"
 	| "checkbox-unselected"
+	| "radio_button_checked"
+	| "arrow-ios-Down-outline"
+	| "arrow-ios-forward-outline"
+	| "arrow-ios-Up"
+	| "radio_button_unchecked"
 	| "vercel";

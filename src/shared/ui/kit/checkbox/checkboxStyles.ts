@@ -10,11 +10,19 @@ const baseStyle = definePartsStyle({
     height: '30px',
     borderRadius: '50%',
     border: 'none',
+    bg: 'none',
     _hover: {
       bg: 'dark.--color-dark-500',
     },
     _active: {
       bg: 'dark.--color-dark-100',
+    },
+    _focus: {
+      bg: 'dark.--color-dark-100',
+      boxShadow: 'none',
+      _hover: {
+        bg: 'dark.--color-dark-100',
+      },
     },
     _checked: {
       bg: 'none',

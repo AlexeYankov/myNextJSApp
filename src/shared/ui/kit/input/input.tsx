@@ -30,6 +30,7 @@ export type TextFieldProps = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   password?: boolean;
   search?: boolean;
+  foolWidth?: boolean;
   type?: 'password' | 'text' | 'number';
   value?: string | number;
   placeholder?: string;
@@ -40,6 +41,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
     const {
       className,
       disabled,
+      foolWidth,
       errorMessage,
       maxW,
       inputId,
@@ -55,7 +57,8 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
     } = props;
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const [valueType, setValueType] = useState(type);
-    const isShowClearButton = onClearClick && search && value?.toString().length! > 0;
+    const isShowClearButton =
+      onClearClick && search && value?.toString().length! > 0;
     const setInputType = () => {
       if (valueType === 'text') {
         return setValueType('password');
@@ -72,22 +75,40 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
       ? 'danger.--color-danger-300'
       : 'dark.--color-dark-100';
     return (
-      <Box maxW={maxW}>
+      <Box
+        maxW={maxW}
+        display={'flex'}
+        alignItems={'flex-start'}
+        flexDirection={'column'}
+        justifyContent={'center'}
+        width="100%"
+      >
         <Text fontSize="sm" color="dark.--color-dark-100">
           {label}
         </Text>
         <InputGroup
           size="sm"
+          display={'flex'}
+          alignItems={'flex-start'}
+          flexDirection={'column'}
+          justifyContent={'center'}
           stroke={focused}
           fill={focused}
           position={'relative'}
+          width={'100%'}
         >
           {search && (
-            <InputLeftElement paddingBottom="1" pointerEvents="none">
+            <InputLeftElement
+              width={foolWidth ? '100%' : ''}
+              paddingBottom="1"
+              pointerEvents="none"
+            >
               <Icon name={'search'} width={20} height={20} />
             </InputLeftElement>
           )}
           <Input
+            display={'flex'}
+            width={'100%'}
             onFocus={() => {
               setIsFocused(true);
             }}
@@ -118,7 +139,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
                   name={'close'}
                   width={20}
                   height={20}
-                  style={{transform: 'scale(0.8)'}}
+                  style={{ transform: 'scale(0.8)' }}
                 />
               )}
               {password && (
