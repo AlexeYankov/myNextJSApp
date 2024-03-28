@@ -8,7 +8,7 @@ const SignIn = () => {
   return (
     <Center flexDirection={'column'}>
       <Header />
-      <SignInPage />;
+      <SignInPage />
     </Center>
   );
 };

@@ -13,6 +13,7 @@ import { Icon } from '../../kit/icons';
 import { RadioGroupKit } from '../../kit/radioGroup';
 import { SelectKit } from '../../kit/select';
 import { ModalKit } from '../../kit/modal';
+import { CardKit } from '../../kit/card';
 
 const Header = () => {
   const [modal, openModal] = useState(false)
@@ -45,9 +46,11 @@ const Header = () => {
         px={25}
       >
         <Image priority src={logo} width={156} height={50} alt={'logo'} />
-        <BtnKit px={'7'}>
+        {/* @ts-ignore*/}
+        <BtnKit px={'7'} variant='secondary'>
           <Text fontSize="sm">Sign In</Text>
         </BtnKit>
+        {/* <CardKit>grger</CardKit> */}
         {/* <CheckBoxKit label={'fegerge'}/> */}
         {/* <SliderKit/> */}
         {/* <DropDownKit
@@ -62,7 +65,7 @@ const Header = () => {
                 y
         </DropDownKit> */}
         {/* <SelectKit/> */}
-        <ModalKit
+        {/* <ModalKit
           title={'modal'}
           fields={[{ fieldName: 'name pack', placeHolder: 'name pack' }]}
           actionTitle="delete Card"
@@ -71,7 +74,7 @@ const Header = () => {
           setOpen={()=>openModal(!modal)}
           checkBoxLabel='Private pack'
         />
-        <BtnKit onClick={()=>openModal(!modal)}>modal</BtnKit>
+        <BtnKit onClick={()=>openModal(!modal)}>modal</BtnKit> */}
         {/* <RadioGroupKit options={['gregerr', 'label', 'three']}/> */}
         {/* <TabsKit options={[{title: 'one'}, {title: 'two'}, {title: 'two'}, {title: 'two'}]}/> */}
         {/* <CheckBoxKit/> */}

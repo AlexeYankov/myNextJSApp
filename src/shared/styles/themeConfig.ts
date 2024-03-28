@@ -10,6 +10,16 @@ import { selectTheme } from '../ui/kit/select';
 import { modalTheme } from '../ui/kit/modal';
 
 export const theme = extendTheme({
+  styles: {
+    global: (props: StyleFunctionProps) => ({
+      body: {
+        fontFamily: 'body',
+        // color: mode('dark', 'red')(props),
+        bg: mode('dark', 'dark.--color-dark-900')(props),
+        lineHeight: 'base',
+      },
+    }),
+  },
   colors: {
     accent: {
       '--color-accent-100': '#bea6ff',
@@ -77,8 +87,42 @@ export const theme = extendTheme({
     Select: selectTheme,
     Modal: modalTheme,
   },
+  // global: (props: StyleFunctionProps) => ({
+  //   body: {
+  //     // sets a custom bg color for dark mode only
+  //     bg: mode(
+  //       // light mode value retrieved from theme
+  //       props.theme.semanticTokens.colors['chakra-body-bg']._dark,
+  //       // your custom value for dark mode
+  //       'red'
+  //     )(props),
+  //   },
+  // }),
   config: {
     initialColorMode: 'dark',
     useSystemColorMode: false,
   },
 });
+
+import { StyleFunctionProps, mode } from '@chakra-ui/theme-tools';
+
+const styles = {
+  // @ts-ignore
+  global: (props) => ({
+    _dark: {
+      body: {
+        fontFamily: 'body',
+        color: mode('gray.800', 'whiteAlpha.900')(props),
+        bg: mode('white', 'gray.800')(props),
+        lineHeight: 'base',
+      },
+      '*::placeholder': {
+        color: mode('gray.400', 'whiteAlpha.400')(props),
+      },
+      '*, *::before, &::after': {
+        borderColor: mode('gray.200', 'whiteAlpha.300')(props),
+        wordWrap: 'break-word',
+      },
+    },
+  }),
+};

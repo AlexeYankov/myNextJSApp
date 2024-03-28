@@ -10,6 +10,9 @@ const primary = defineStyle({
       _focus: {
         borderColor: 'info.--color-info-700',
       },
+      _active: {
+        borderColor: 'info.--color-info-700',
+      },
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.8',

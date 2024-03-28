@@ -1,4 +1,4 @@
-import { Center, Checkbox } from '@chakra-ui/react';
+import { Center, Checkbox, Text } from '@chakra-ui/react';
 import { Icon } from '../icons';
 
 export const CheckBoxKit = (props: any) => {
@@ -17,14 +17,14 @@ export const CheckBoxKit = (props: any) => {
   }
 
   return (
-    <Center justifyContent={'flex-start'}>
+    <Center justifyContent={'flex-start'} width={'100%'}>
       <Checkbox
         id={label}
         isDisabled={disabled}
         icon={<CustomIcon />}
         {...rest}
       >
-        {label}
+        <Text fontSize={'sm'}>{label}</Text>
       </Checkbox>
     </Center>
   );

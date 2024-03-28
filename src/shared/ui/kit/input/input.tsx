@@ -1,17 +1,13 @@
-// import { Input, Text, Box } from '@chakra-ui/react';
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
   forwardRef,
-  useRef,
   useState,
 } from 'react';
-import searchImg from '../../../../public/images/search.svg';
 import {
   Box,
   Input,
   InputGroup,
-  InputLeftAddon,
   InputLeftElement,
   InputRightElement,
   Text,
@@ -20,12 +16,14 @@ import Image from 'next/image';
 import s from '../../../../public/images/sprite.svg';
 import { Icon } from '../icons/icon';
 import React from 'react';
+import { FieldError, FieldErrors, UseFormRegister } from 'react-hook-form';
 
 export type TextFieldProps = {
-  errorMessage?: string;
+  errorMessage?: FieldError | undefined | string;
   inputId?: string;
   maxW?: string;
   label?: string;
+  id?: string;
   onClearClick?: () => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   password?: boolean;
@@ -34,6 +32,8 @@ export type TextFieldProps = {
   type?: 'password' | 'text' | 'number';
   value?: string | number;
   placeholder?: string;
+  register: UseFormRegister<any>;
+  error?: FieldErrors<{ email: string; password: string; }>;
 } & ComponentPropsWithoutRef<'input'>;
 
 export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
@@ -44,6 +44,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
       foolWidth,
       errorMessage,
       maxW,
+      error,
       inputId,
       value,
       onChange,
@@ -51,8 +52,10 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
       onClearClick,
       password,
       search,
+      id,
       placeholder,
       type = 'text',
+      register,
       ...rest
     } = props;
     const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -86,13 +89,14 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
         <Text fontSize="sm" color="dark.--color-dark-100">
           {label}
         </Text>
+
         <InputGroup
           size="sm"
           display={'flex'}
           alignItems={'flex-start'}
           flexDirection={'column'}
           justifyContent={'center'}
-          stroke={focused}
+          // stroke={focused}
           fill={focused}
           position={'relative'}
           width={'100%'}
@@ -107,6 +111,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
             </InputLeftElement>
           )}
           <Input
+            {...register(id as string)}
             display={'flex'}
             width={'100%'}
             onFocus={() => {
@@ -117,7 +122,7 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
             }}
             isInvalid={!errorMessage}
             isDisabled={disabled}
-            id={`input${label}`}
+            id={id}
             type={valueType}
             ref={ref}
             variant={'primary'}
@@ -131,31 +136,50 @@ export const InputKit = forwardRef<HTMLInputElement, TextFieldProps>(
             value={value}
           />
           {(search || password) && (
-            <InputRightElement paddingBottom="2px">
-              {isShowClearButton && (
-                <Icon
-                  cursor={'pointer'}
-                  onClick={onClearClick}
-                  name={'close'}
-                  width={20}
-                  height={20}
-                  style={{ transform: 'scale(0.8)' }}
-                />
-              )}
-              {password && (
-                <Icon
-                  cursor={'pointer'}
-                  onClick={setInputType}
-                  name={'eye-outline'}
-                  width={30}
-                  height={20}
-                />
-              )}
-            </InputRightElement>
+            <label htmlFor={label}>
+              <InputRightElement
+                paddingBottom="2px"
+                _hover={{ fill: 'light.--color-light-100', cursor: 'pointer' }}
+              >
+                {isShowClearButton && (
+                  <Icon
+                    cursor={'pointer'}
+                    onClick={onClearClick}
+                    name={'close'}
+                    width={20}
+                    height={20}
+                    style={{ transform: 'scale(0.8)' }}
+                  />
+                )}
+                {password && (
+                  <Icon
+                    cursor={'pointer'}
+                    onClick={setInputType}
+                    name={
+                      valueType.toString() !== 'text'
+                        ? 'eye-off'
+                        : 'eye-outline'
+                    }
+                    width={30}
+                    height={20}
+                  />
+                )}
+                {/* {password && valueType === 'text' && (
+                  <Icon
+                    cursor={'pointer'}
+                    onClick={setInputType}
+                    name={'eye-outline'}
+                    width={30}
+                    height={20}
+                  />
+                )} */}
+              </InputRightElement>
+            </label>
           )}
         </InputGroup>
-        <Text position={'absolute'} fontSize="sm" color={defaultInput}>
-          {errorMessage}
+        <Text position={'absolute'} marginTop={'70px'} fontSize="sm" color={defaultInput}>
+          {/* @ts-ignore */}
+          {error && error[id]?.message}
         </Text>
       </Box>
     );

@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
-import { Button } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react';
 import { Icon } from '../icons';
 
 export type ButtonProps<T extends ElementType = 'button'> = {
@@ -7,10 +7,12 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
+  labelFontSize?: string;
+  labelFontWeight?: string;
+  label?: string;
   logOut?: boolean;
   classNameBtnBox?: string;
   fullWidth?: boolean;
-  px?: string;
   icon?: ReactNode;
   variant?: 'ghost' | 'outline' | 'solid' | 'link' | 'unstyled' | 'secondary';
 } & ComponentPropsWithoutRef<T>;
@@ -20,10 +22,12 @@ export const BtnKit = (props: ButtonProps) => {
     as: Component = 'button',
     children,
     className,
+    label,
+    labelFontSize = 'sm',
     logOut,
     classNameBtnBox,
     fullWidth,
-    px,
+    labelFontWeight,
     disabled,
     icon,
     variant = 'primary',
@@ -34,10 +38,11 @@ export const BtnKit = (props: ButtonProps) => {
     <Button
       isDisabled={disabled}
       variant={variant}
-      px={px}
-      {...rest}
       stroke={defaultColor}
       fill={defaultColor}
+      width={fullWidth ? '100%' : ''}
+      height={'36px'}
+      {...rest}
     >
       {logOut && (
         <Icon
@@ -48,6 +53,7 @@ export const BtnKit = (props: ButtonProps) => {
           style={{ transform: 'scale(0.7)' }}
         />
       )}
+      <Text fontSize={labelFontSize} fontWeight={labelFontWeight}>{label}</Text>
       {children}
     </Button>
   );

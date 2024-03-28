@@ -6,7 +6,8 @@ import ru from '../../../locales/ru.json';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { ReactNode } from 'react';
 import { ChakraBaseProvider } from '@chakra-ui/react';
-import { theme } from './themeConfig';
+import { theme } from '../styles/themeConfig';
+import { ToastContainer } from 'react-toastify';
 
 function Providers({
   children,
@@ -33,7 +34,21 @@ function Providers({
 
   return (
     <ChakraBaseProvider theme={theme}>
-      <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <I18nextProvider i18n={i18n}>
+       {children}
+      </I18nextProvider>
     </ChakraBaseProvider>
   );
 }
